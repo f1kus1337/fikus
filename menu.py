@@ -25,12 +25,6 @@ def time():
 def open_2115():
     root = Toplevel()
     root.title("Пятнашки")
-
-    for i in range(4):
-        for j in range(4):
-            siz = Frame(root, width=50, height=50, borderwidth=1, relief="solid")
-            siz.grid(row=i, column=j)
-
     root.mainloop()
 
 
