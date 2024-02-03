@@ -1,0 +1,27 @@
+def rules():
+        rule = Toplevel()
+        rule.title("Пятнашки")
+        rule.geometry("450x300")
+        rule.configure(bg="black")
+
+        rrule = Label(rule, text="Правила:",bg="black", fg="white", font=("Comic Sans MS",12,"bold"))
+        rrule.pack()
+
+        rulesss = """
+    1. Игрок может выбрать размер игрового поля, либо игру на время.
+    В первом режиме игрок выбирает размер игрового поля (классический вариант 4х4 или пользователь может ввести свой размер поля (максимальное доступные 20х20), после чего начинает игру.
+    Во втором режиме пользователь должен за определенное количество времени успеть упорядочить ячейки от 1 до 15.
+    2. Условия победы: Игрок перемещает блоки по пустым клеткам с целью упорядочить их по возрастанию.
+    3. Запись в рекорды: Игра ведет учет времени, затраченного на прохождение уровня. 
+            """
+
+        ruletext = tk.Text(rule, wrap="word")
+
+        ruletext.insert("1.0", rulesss)
+
+        ruletext.pack()
+        ruletext.configure(bg="black", fg="white", font=("Comic Sans MS",10,"bold"))
+
+        button = Button(rule, text="Выход", command=rule.destroy,bg="black", fg="white", font=("Comic Sans MS",9,"bold"))
+        button.pack()
+        button.place(x=200, y=265)
