@@ -1,0 +1,30 @@
+def pole():
+    root4 = Toplevel()
+    root4.title("Пятнашки")
+    root4.geometry("450x300")
+    root4.configure(bg="black")
+
+    def zxc():
+        X = int(pole1.get())
+        Y = int(pole2.get())
+
+
+    X = Label(root4, text="X",bg="black", fg="white", font=("Comic Sans MS",12,"bold"))
+    X.place(x=30, y=50)
+
+    Y = Label(root4, text="Y",bg="black", fg="white", font=("Comic Sans MS",12,"bold"))
+    Y.place(x=30, y=90)
+
+    pole1 = Entry(root4)
+    pole1.place(x=80, y=50)
+
+    pole2 = Entry(root4)
+    pole2.place(x=80, y=90)
+
+    submit_btn = Button(root4, text="Submit", command=zxc,bg="black", fg="white", font=("Comic Sans MS",12,"bold"))
+    submit_btn.place(x=30, y=170)
+
+    button = Button(root4, text="Выход", command=root4.destroy,bg="black", fg="white", font=("Comic Sans MS",9,"bold"))
+    button.pack()
+    button.place(x=200, y=265)
+    root4.mainloop()
