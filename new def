@@ -1,0 +1,11 @@
+#new def close window and def back window 
+
+def menuclose():
+    root.withdraw()
+    menu()
+
+def back2():  
+    rule.destroy()  # Закрывает
+    root.deiconify()  # Восснавливает
+
+#etc
