@@ -75,26 +75,25 @@ class Game:
             self.grid[clicked_row][clicked_col]["text"] = ''  # right
 
         if self.is_solved():
-            self.show_win_popup()
+            self.root.title("Вы выиграли!")
 
-    def show_win_popup(self):
-        win_popup = tk.Toplevel(self.root)
-        win_popup.title("Поздравляем, вы выиграли!")
-        win_popup.geometry(f"{550}x{400}+{500}+{200}")
+def man_menu():
+    root = Tk()
+    root.title("Пятнашки")
+    root.geometry(f"{550}x{400}+{500}+{200}")
 
-        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
-        message_label.pack(pady=20)
+    label = Label(root, text="Добро пожаловать в игру 'Пятнашки'!", font=("Helvetica", 14, "bold"), fg="black")
+    label.pack(pady=20)
 
-        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        back_button.pack(pady=10)
+    # Кнопка "Играть" открывает меню выбора режима
+    Button(root, text="Играть", command=lambda: main_menu(root), width=45, height=2, font=("Helvetica", 12, "bold"), fg="black", bg="white").pack(pady=10)
 
-        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        exit_button.pack(pady=10)
+    Button(root, text="Выход", command=root.destroy, width=45, height=2, font=("Helvetica", 12, "bold"), fg="black", bg="white").pack(pady=10)
 
+    root.mainloop()
 
-def main_menu():
+def main_menu(root):
+
     root = Tk()
     root.title("Пятнашки")
     root.geometry(f"{550}x{400}+{500}+{200}")
@@ -217,23 +216,7 @@ class TimedGame:
             self.grid[clicked_row][clicked_col]["text"] = ''
 
         if self.is_solved():
-            self.show_win_popup()
-
-    def show_win_popup(self):
-        win_popup = tk.Toplevel(self.root)
-        win_popup.title("Поздравляем, вы выиграли!")
-        win_popup.geometry(f"{550}x{400}+{500}+{200}")
-
-        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
-        message_label.pack(pady=20)
-
-        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        back_button.pack(pady=10)
-
-        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        exit_button.pack(pady=10)
+            self.root.title("Вы выиграли!")
 
 def usergame(root):
     root.destroy()
@@ -344,59 +327,26 @@ class GameCustomSize:
             self.grid[clicked_row][clicked_col]["text"] = ''
 
         if self.is_solved():
-            self.show_win_popup()
+            self.root.title("Вы выиграли!")
 
-    def show_win_popup(self):
-        win_popup = tk.Toplevel(self.root)
-        win_popup.title("Поздравляем, вы выиграли!")
-        win_popup.geometry(f"{550}x{400}+{500}+{200}")
+def rules(root):
+    root.destroy()
+    new_root = Tk()
+    new_root.title("Правила игры")
+    new_root.geometry(f"{550}x{400}+{500}+{200}")
 
-        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
-        message_label.pack(pady=20)
+    rules_text = "Правила игры:\n\n"
+    rules_text += "1. Игровое поле представляет собой квадратную сетку из чисел от 1 до N^2-1 и одной пустой клетки.\n"
+    rules_text += "2. Цель игры - упорядочить числа по возрастанию, двигая их по полю, используя пустую клетку.\n"
+    rules_text += "3. Пустая клетка может быть использована для перемещения чисел влево, вправо, вверх или вниз.\n"
+    rules_text += "4. Игра заканчивается, когда все числа расположены по порядку.\n"
 
-        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        back_button.pack(pady=10)
+    Label(new_root, text=rules_text, font=("Helvetica", 12), justify=LEFT).pack(pady=20)
 
-        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
-                                fg="black", bg="white")
-        exit_button.pack(pady=10)
-
-
-def rules(rule):
-
-    rule = Tk()
-    rule.title("Пятнашки")
-
-    rule.configure()
-    rule.geometry(f"{550}x{400}+{500}+{200}")
-
-
-    rrule = Label(rule, text="Правила:", bg="white", fg="black", font=("Comic Sans MS", 12, "bold"))
-    rrule.pack()
-
-    rulesss = """Цель игры заключается в упорядочивания чисел от 1 до 15 на игровом поле размером 4x4, перемещая их по полю с помощью пустой ячейки.
-
-    В приложении имеется три режима игры:
-
-    В режиме "Обычный" пользователь будет перемещать числа на игровом поле, используя свободную ячейку, с целью упорядочить их по возрастанию.
-    -----------------------------------------------------------------
-    В режиме "На время" пользователь будет играть с ограниченным временем. Задача остается такой же - упорядочить числа. У пользователя будет отведено определенное время для решения головоломки, и он должен постараться сделать это как можно быстрее.
-    -----------------------------------------------------------------
-    В режиме "Пользователь вводит размеры поля" пользователь будет иметь возможность настроить размеры игрового поля и уровень сложности самостоятельно. Например, пользователь может выбрать поле с размерами 3x3 или 5x5, изменить количество чисел на поле и т.д. Задача пользователя всё равно остается той же - упорядочить числа на поле.
-
-                   """
-    ruletext = tk.Text(rule, wrap="word")
-
-    ruletext.insert("1.0", rulesss)
-
-    ruletext.pack()
-    ruletext.configure(bg="white", fg="black", font=("Comic Sans MS", 10, "bold"))
-
-    Button(rule, text="Назад", command=lambda: back_to_menu(new_root), width=20, height=1, font=("Helvetica", 9, "bold"), fg="black", bg="white").pack(pady=10)
+    Button(new_root, text="Назад", command=lambda: back_to_menu(new_root), width=20, height=1, font=("Helvetica", 9, "bold"), fg="black", bg="white").pack(pady=10)
 
 def back_to_menu(root):
     root.destroy()
     main_menu()
 
-main_menu()
+man_menu()
