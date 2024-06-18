@@ -75,7 +75,23 @@ class Game:
             self.grid[clicked_row][clicked_col]["text"] = ''  # right
 
         if self.is_solved():
-            self.root.title("Вы выиграли!")
+                self.show_win_popup()
+
+    def show_win_popup(self):
+        win_popup = tk.Toplevel(self.root)
+        win_popup.geometry(f"{550}x{400}+{500}+{200}")
+        win_popup.title("Поздравляем, вы выиграли!")
+
+        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
+        message_label.pack(pady=20)
+
+        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        back_button.pack(pady=10)
+
+        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        exit_button.pack(pady=10)
 
 def man_menu():
     root = Tk()
@@ -216,7 +232,23 @@ class TimedGame:
             self.grid[clicked_row][clicked_col]["text"] = ''
 
         if self.is_solved():
-            self.root.title("Вы выиграли!")
+                self.show_win_popup()
+
+    def show_win_popup(self):
+        win_popup = tk.Toplevel(self.root)
+        win_popup.geometry(f"{550}x{400}+{500}+{200}")
+        win_popup.title("Поздравляем, вы выиграли!")
+
+        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
+        message_label.pack(pady=20)
+
+        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        back_button.pack(pady=10)
+
+        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        exit_button.pack(pady=10)
 
 def usergame(root):
     root.destroy()
@@ -327,7 +359,23 @@ class GameCustomSize:
             self.grid[clicked_row][clicked_col]["text"] = ''
 
         if self.is_solved():
-            self.root.title("Вы выиграли!")
+            self.show_win_popup()
+
+    def show_win_popup(self):
+        win_popup = tk.Toplevel(self.root)
+        win_popup.geometry(f"{550}x{400}+{500}+{200}")
+        win_popup.title("Поздравляем, вы выиграли!")
+
+        message_label = tk.Label(win_popup, text="Поздравляем, вы выиграли!", font=("Helvetica", 12, "bold"))
+        message_label.pack(pady=20)
+
+        back_button = tk.Button(win_popup, text="Назад", command=self.back_to_menu, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        back_button.pack(pady=10)
+
+        exit_button = tk.Button(win_popup, text="Выход", command=self.root.quit, font=("Helvetica", 9, "bold"),
+                                fg="black", bg="white")
+        exit_button.pack(pady=10)
 
 def rules(root):
     root.destroy()
